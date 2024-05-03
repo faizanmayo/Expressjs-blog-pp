@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog DETAILS</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <%- include('../public/partials/header.ejs') %>
+    <div class="container">
+      <div class="viewBlog-header">
+        <h1 class="title text-left"><%= blogDetails?.title %></h1>
+
+        <a href="/edit/<%=blogDetails.id  %>" class="edit-btn">Edit</a>
+      </div>
+      <div class="overflow-div">
+        <p><%= blogDetails?.description %></p>
+      </div>
+    </div>
+
+    <%- include('../public/partials/footer.ejs') %>
+  </body>
+</html>

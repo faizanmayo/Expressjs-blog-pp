@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog App</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <%- include('public/partials/header.ejs') %>
+
+    <h1 class="title">Welcome to Blog app</h1>
+    <div class="form-container">
+      <% if (locals.isEdit) { %>
+      <p class="form-text">Edit your Blog</p>
+      <% }else{ %>
+      <p class="form-text">Fill the form for creating your blog</p>
+      <% } %>
+
+      <form
+        action="<%= locals.isEdit ? `/edit/${locals.blogDetails?.id}` : '/home' %>"
+        method="post"
+      >
+        <label for="bTitle">Blog Title</label>
+        <input
+          type="text"
+          id="bTitle"
+          name="blogTitle"
+          placeholder="Your Title Here..."
+          required
+        />
+
+        <label for="bDes">Blog description</label>
+        <textarea
+          type="text"
+          id="bDes"
+          name="blogDes"
+          placeholder="Your Blog here..."
+          rows="6"
+          required
+        >
+        </textarea>
+        <input
+          type="submit"
+          value="<%= locals.isEdit ? 'EDIT' : 'PUBLISH' %>"
+        />
+      </form>
+    </div>
+    <%- include('public/partials/footer.ejs') %>
+  </body>
+</html>
